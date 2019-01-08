@@ -51,6 +51,38 @@ namespace ECommerce.Data
         UserManager.CreateAsync(user, "Password1*").GetAwaiter().GetResult();
       }
 
+      // 함수를 사용해서 User 등록
+      // Login 됨을 확인
+      if (UserManager.FindByEmailAsync("Dalda@dalsoft.io").GetAwaiter().GetResult() == null)
+      {
+        var user = new AppUser
+        {
+          FirstName = "Dalda",
+          LastName = "Park",
+          UserName = "Dalda@dalsoft.io",
+          Email = "Dalda@dalsoft.io",
+          EmailConfirmed = true,
+          LockoutEnabled = false
+        };
+
+        UserManager.CreateAsync(user, "Password2*").GetAwaiter().GetResult();
+      }
+
+          if (UserManager.FindByEmailAsync("Dalda@dalsoft.io").GetAwaiter().GetResult() == null)
+      {
+        var user = new AppUser
+        {
+          FirstName = "Dal",
+          LastName = "Kim",
+          UserName = "Dal@dalsoft.io",
+          Email = "Dal@dalsoft.io",
+          EmailConfirmed = true,
+          LockoutEnabled = false
+        };
+
+        UserManager.CreateAsync(user, "Password3*").GetAwaiter().GetResult();
+      }
+
       var admin = UserManager.FindByEmailAsync("stu@ratcliffe.io").GetAwaiter().GetResult();
 
       if (UserManager.IsInRoleAsync(admin, "Admin").GetAwaiter().GetResult() == false)
